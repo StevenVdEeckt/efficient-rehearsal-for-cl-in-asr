@@ -1,0 +1,207 @@
+# network architecture
+freeze_param: 
+- encoder.embed.conv
+- encoder.encoders.0.conv_module
+- encoder.encoders.0.norm_ff
+- encoder.encoders.0.norm_mha
+- encoder.encoders.0.norm_ff_macaron
+- encoder.encoders.0.norm_conv
+- encoder.encoders.0.norm_final
+- encoder.encoders.0.self_attn.pos_bias_u
+- encoder.encoders.0.self_attn.pos_bias_v
+- encoder.encoders.1.conv_module
+- encoder.encoders.1.norm_ff
+- encoder.encoders.1.norm_mha
+- encoder.encoders.1.norm_ff_macaron
+- encoder.encoders.1.norm_conv
+- encoder.encoders.1.norm_final
+- encoder.encoders.1.self_attn.pos_bias_u
+- encoder.encoders.1.self_attn.pos_bias_v
+- encoder.encoders.2.conv_module
+- encoder.encoders.2.norm_ff
+- encoder.encoders.2.norm_mha
+- encoder.encoders.2.norm_ff_macaron
+- encoder.encoders.2.norm_conv
+- encoder.encoders.2.norm_final
+- encoder.encoders.2.self_attn.pos_bias_u
+- encoder.encoders.2.self_attn.pos_bias_v
+- encoder.encoders.3.conv_module
+- encoder.encoders.3.norm_ff
+- encoder.encoders.3.norm_mha
+- encoder.encoders.3.norm_ff_macaron
+- encoder.encoders.3.norm_conv
+- encoder.encoders.3.norm_final
+- encoder.encoders.4.self_attn.pos_bias_u
+- encoder.encoders.4.self_attn.pos_bias_v
+- encoder.encoders.4.conv_module
+- encoder.encoders.4.norm_ff
+- encoder.encoders.4.norm_mha
+- encoder.encoders.4.norm_ff_macaron
+- encoder.encoders.4.norm_conv
+- encoder.encoders.4.norm_final
+- encoder.encoders.5.conv_module
+- encoder.encoders.5.norm_ff
+- encoder.encoders.5.norm_mha
+- encoder.encoders.5.norm_ff_macaron
+- encoder.encoders.5.norm_conv
+- encoder.encoders.5.norm_final
+- encoder.encoders.5.self_attn.pos_bias_u
+- encoder.encoders.5.self_attn.pos_bias_v
+- encoder.encoders.6.self_attn.pos_bias_u
+- encoder.encoders.6.self_attn.pos_bias_v
+- encoder.encoders.6.conv_module
+- encoder.encoders.6.norm_ff
+- encoder.encoders.6.norm_mha
+- encoder.encoders.6.norm_ff_macaron
+- encoder.encoders.6.norm_conv
+- encoder.encoders.6.norm_final
+- encoder.encoders.7.self_attn.pos_bias_u
+- encoder.encoders.7.self_attn.pos_bias_v
+- encoder.encoders.7.conv_module
+- encoder.encoders.7.norm_ff
+- encoder.encoders.7.norm_mha
+- encoder.encoders.7.norm_ff_macaron
+- encoder.encoders.7.norm_conv
+- encoder.encoders.7.norm_final
+- encoder.encoders.8.self_attn.pos_bias_u
+- encoder.encoders.8.self_attn.pos_bias_v
+- encoder.encoders.8.conv_module
+- encoder.encoders.8.norm_ff
+- encoder.encoders.8.norm_mha
+- encoder.encoders.8.norm_ff_macaron
+- encoder.encoders.8.norm_conv
+- encoder.encoders.8.norm_final
+- encoder.encoders.9.self_attn.pos_bias_u
+- encoder.encoders.9.self_attn.pos_bias_v
+- encoder.encoders.9.conv_module
+- encoder.encoders.9.norm_ff
+- encoder.encoders.9.norm_mha
+- encoder.encoders.9.norm_ff_macaron
+- encoder.encoders.9.norm_conv
+- encoder.encoders.9.norm_final
+- encoder.encoders.10.self_attn.pos_bias_u
+- encoder.encoders.10.self_attn.pos_bias_v
+- encoder.encoders.10.conv_module
+- encoder.encoders.10.norm_ff
+- encoder.encoders.10.norm_mha
+- encoder.encoders.10.norm_ff_macaron
+- encoder.encoders.10.norm_conv
+- encoder.encoders.10.norm_final
+- encoder.encoders.11.self_attn.pos_bias_u
+- encoder.encoders.11.self_attn.pos_bias_v
+- encoder.encoders.11.conv_module
+- encoder.encoders.11.norm_ff
+- encoder.encoders.11.norm_mha
+- encoder.encoders.11.norm_ff_macaron
+- encoder.encoders.11.norm_conv
+- encoder.encoders.11.norm_final
+- encoder.after_norm
+- decoder.embed
+- decoder.after_norm
+- decoder.decoders.0.norm1
+- decoder.decoders.0.norm2
+- decoder.decoders.0.norm3
+- decoder.decoders.1.norm1
+- decoder.decoders.1.norm2
+- decoder.decoders.1.norm3
+- decoder.decoders.2.norm1
+- decoder.decoders.2.norm2
+- decoder.decoders.2.norm3
+- decoder.decoders.3.norm1
+- decoder.decoders.3.norm2
+- decoder.decoders.3.norm3
+- decoder.decoders.4.norm1
+- decoder.decoders.4.norm2
+- decoder.decoders.4.norm3
+- decoder.decoders.5.norm1
+- decoder.decoders.5.norm2
+- decoder.decoders.5.norm3
+- decoder.output_layer
+- ctc
+
+# frontend related
+frontend: default
+frontend_conf:
+    n_fft: 512
+    win_length: 400
+    hop_length: 160
+
+# encoder related
+encoder: conformer
+encoder_conf:
+    input_layer: conv2d
+    num_blocks: 12
+    linear_units: 2048
+    dropout_rate: 0.1
+    output_size: 256
+    attention_heads: 4
+    attention_dropout_rate: 0.0
+    pos_enc_layer_type: rel_pos
+    selfattention_layer_type: rel_selfattn
+    activation_type: swish
+    macaron_style: true
+    use_cnn_module: true
+    cnn_module_kernel: 15
+
+# decoder related
+decoder: multihead_transformer
+decoder_conf:
+    input_layer: embed
+    num_blocks: 6
+    linear_units: 2048
+    dropout_rate: 0.1
+    language_ids: ['en', 'nl', 'sv', 'pl', 'ru']
+
+# hybrid CTC/attention
+model_conf:
+    ctc_weight: 0.3
+    lsm_weight: 0.1
+    length_normalized_loss: false
+    lang_token_id: 'ru'
+
+# CL-related
+batches_per_epoch: [1.00]
+batch_type: score
+valid_batch_type: unsorted
+sort_batch: random
+sort_in_batch: random
+
+# optimization related
+optim: adam
+batch_size: 8
+accum_grad: 8
+max_epoch: 3
+optim_conf:
+    lr: 0.01
+
+best_model_criterion:
+-   - valid
+    - acc
+    - max
+keep_nbest_models: 5
+
+cl_method: sder
+cl_method_conf:
+        old_tasks: 1
+        group: true
+
+memory_grouped: true
+
+num_workers: 0
+
+specaug: specaug
+specaug_conf:
+    apply_time_warp: true
+    time_warp_window: 5
+    time_warp_mode: bicubic
+    apply_freq_mask: true
+    freq_mask_width_range:
+    - 0
+    - 30
+    num_freq_mask: 2
+    apply_time_mask: true
+    time_mask_width_range:
+    - 0
+    - 40
+    num_time_mask: 2
+

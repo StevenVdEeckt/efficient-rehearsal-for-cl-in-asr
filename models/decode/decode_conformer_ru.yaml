@@ -1,0 +1,10 @@
+batch_size: 1
+beam_size: 10
+ctc_weight: 0.3
+task_label: ru
+bpemodel: data/ru_token_list/bpe_unigram5000/bpe.model
+token_list: data/ru_token_list/bpe_unigram5000/tokens.txt
+lm_weight: 0.0
+maxlenratio: 0.0
+minlenratio: 0.0
+penalty: 0.0
