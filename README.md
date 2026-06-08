@@ -3,7 +3,7 @@ Supplementary material to the paper "Efficient Rehearsal for Continual Learning 
 
 To cite the paper, use:
 ```
-@ARTICLE{vandere_eeckt_ieeetaslp26,
+@ARTICLE{vander_eeckt_ieeetaslp26,
   author={Vander Eeckt, Steven and Van hamme, Hugo},
   journal={IEEE Transactions on Audio, Speech and Language Processing}, 
   title={Efficient Rehearsal for Continual Learning in ASR via Singular Value Tuning}, 
