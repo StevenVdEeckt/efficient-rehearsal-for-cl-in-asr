@@ -1,6 +1,21 @@
 # Efficient Rehearsal for Continual Learning in ASR via Singular Value Tuning
 Supplementary material to the paper "Efficient Rehearsal for Continual Learning in ASR via Singular Value Tuning", submitted to IEEE TASLP.
 
+To cite the paper, use:
+```
+@ARTICLE{vandere_eeckt_ieeetaslp26,
+  author={Vander Eeckt, Steven and Van hamme, Hugo},
+  journal={IEEE Transactions on Audio, Speech and Language Processing}, 
+  title={Efficient Rehearsal for Continual Learning in ASR via Singular Value Tuning}, 
+  year={2026},
+  volume={34},
+  number={},
+  pages={978-991},
+  keywords={Adaptation models;Continuing education;Training;Vectors;Multilingual;Data models;Singular value decomposition;Computational modeling;Speech processing;Covariance matrices;Continual learning;automatic speech recognition;rehearsal-based continual learning;singular value decomposition},
+  doi={10.1109/TASLPRO.2026.3658931}}
+```
+
+
 ## code
 
 ESPnet2 [Wanatabe et al., 2018] is used for all experiments. 
