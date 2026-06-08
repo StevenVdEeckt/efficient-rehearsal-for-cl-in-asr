@@ -12,7 +12,8 @@ To cite the paper, use:
   number={},
   pages={978-991},
   keywords={Adaptation models;Continuing education;Training;Vectors;Multilingual;Data models;Singular value decomposition;Computational modeling;Speech processing;Covariance matrices;Continual learning;automatic speech recognition;rehearsal-based continual learning;singular value decomposition},
-  doi={10.1109/TASLPRO.2026.3658931}}
+  doi={10.1109/TASLPRO.2026.3658931}
+}
 ```
 
 
